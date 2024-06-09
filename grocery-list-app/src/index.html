@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E8EBE4;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #798071;
+        }
+
+        #list-form {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #B8BACF;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #D2D5DD;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #999AC6;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #798071;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #999AC6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grocery List App</h1>
+
+    <!-- Form to Add Items to the List -->
+    <div id="list-form">
+        <label for="item-name">Item Name:</label>
+        <input type="text" id="item-name" placeholder="Enter item name">
+
+        <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <!-- Display of the Grocery List -->
+    <div id="grocery-list">
+        <h2>Grocery List</h2>
+        <ul id="items"></ul>
+    </div>
+
+    <script>
+        // Array to store the grocery items
+        let groceryItems = [];
+
+        // Function to add an item to the grocery list
+        function addItem() {
+            const itemName = document.getElementById('item-name').value.trim();
+
+            if (!itemName) {
+                alert('Please enter an item name.');
+                return;
+            }
+
+            // Add the item to the list
+            groceryItems.push(itemName);
+
+            // Update the display
+            updateList();
+        }
+
+        // Function to update the display of the grocery list
+        function updateList() {
+            const itemsList = document.getElementById('items');
+            itemsList.innerHTML = '';
+
+            groceryItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                itemsList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
